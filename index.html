@@ -364,8 +364,7 @@ function renderOrd(){
   var L = (D.orders[ORD_G] || []).filter(function(o){ return o.year === y && (!q || (o.title + ' ' + o.no).toLowerCase().indexOf(q) >= 0) });
   $('ordC').textContent = L.length + ' ฉบับ · เรียงจากใหม่ไปเก่า';
   $('ordL').innerHTML = !L.length ? '<div class="oempty">ไม่พบคำสั่ง' + (q ? 'ที่ตรงกับคำค้น' : '') + '</div>' : L.map(function(o){
-    var meta = [o.no ? 'คำสั่งที่ ' + esc(o.no) : '', esc(o.date)].filter(String).join(' · ');
-    return '<div class="oi"><div class="t">' + (meta ? '<div class="m">' + meta + '</div>' : '') + '<div class="h">' + esc(o.title) + '</div></div>' +
+    return '<div class="oi"><div class="t"><div class="h">' + esc(o.title) + '</div></div>' +
       (o.url ? '<a target="_blank" rel="noopener" href="' + esc(o.url) + '">เปิดอ่าน</a>' : '<span class="m">ไม่มีลิงก์</span>') + '</div>';
   }).join('');
 }
