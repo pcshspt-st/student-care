@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ไม่ให้เครื่องมือค้นหา (Google ฯลฯ) เก็บหน้านี้และลิงก์ในหน้าไปแสดงในผลค้นหา -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>ระบบดูแลช่วยเหลือผู้เรียน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+  :root{--pri:#1F4E79;--pri2:#163A5C;--ink:#1B2433;--mut:#5A6575;--line:#E3E8EE;--bg:#F4F6F9;--warnbg:#FFF4E5;--warnbd:#F3C98B;--warn:#7A3A00}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Thai',sans-serif;font-size:15px;line-height:1.5}
+  a{color:var(--pri)}
+  .hd{background:var(--pri);color:#fff;padding:28px 20px 24px}
+  .hd .in,.main{max-width:880px;margin:0 auto}
+  .beta{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#FFE2B8;color:#6B3300;margin-bottom:8px}
+  .hd h1{margin:0;font-size:24px;line-height:1.3}
+  .hd p{margin:4px 0 0;font-size:13px;color:#D6E2EE}
+  .main{padding:16px}
+  .notice{background:var(--warnbg);border:1px solid var(--warnbd);color:var(--warn);border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:14px;white-space:pre-line}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(min-width:700px){.grid{grid-template-columns:1fr 1fr 1fr}}
+  @media(max-width:699px){.tile.wide{grid-column:span 2;flex-direction:row;align-items:center}}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-decoration:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;min-height:112px;width:100%}
+  .tile:hover{border-color:var(--pri)}
+  .tile:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+  .tile.off{cursor:default;background:#FAFBFC}
+  .tile.off:hover{border-color:var(--line)}
+  .tile .ic{width:44px;height:44px}
+  .tile .tt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+  .tile .nm{font-size:15px;font-weight:600;line-height:1.35}
+  .tile .sb{font-size:12px;color:var(--mut)}
+  .tile .tag{align-self:flex-start}
+  .tile.wide .go{margin-left:auto}
+  .sysp h2{display:flex;align-items:center;gap:10px}
+  .sysp .ds{margin:6px 0 14px}
+  .sysp .btns{flex-direction:column}
+  .sysp .btn{flex:none}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .card.off{opacity:.72}
+  .top{display:flex;gap:12px;align-items:flex-start}
+  .ic{width:46px;height:46px;flex:none;border-radius:12px;background:#E3ECF5;display:flex;align-items:center;justify-content:center}
+  .card.off .ic,.tile.off .ic{background:#EEF1F4}
+  .nm{font-size:16px;font-weight:600;line-height:1.35}
+  .ds{font-size:13px;color:var(--mut);margin-top:2px}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .tag{font-size:12px;padding:2px 9px;border-radius:999px;background:#F1F3F6;color:#3A4554}
+  .tag.test{background:var(--warnbg);color:var(--warn);font-weight:600}
+  .tag.soon{background:#EEF1F4;color:#3A4554;font-weight:600}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{flex:1 1 140px;min-height:46px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;font:inherit;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;padding:8px 12px;text-align:center}
+  .btn.p{background:var(--pri);color:#fff;border:0}
+  .btn.p:hover{background:var(--pri2)}
+  .btn.o{background:#fff;color:var(--pri);border:1px solid #C9D2DC;font-weight:500}
+  .btn.o:hover{border-color:var(--pri)}
+  .btn[disabled]{background:#EEF1F4;color:#5A6575;border:0;cursor:default}
+  .sharebox{border-top:1px dashed var(--line);padding-top:10px}
+  .sharebox summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--pri);min-height:36px;display:flex;align-items:center;gap:6px;list-style:none}
+  .sharebox summary::-webkit-details-marker{display:none}
+  .sharebox summary::before{content:'▸';display:inline-block;transition:transform .15s}
+  .sharebox[open] summary::before{transform:rotate(90deg)}
+  .sh{display:flex;flex-direction:column;gap:6px;padding:8px 0 2px}
+  .shl{font-size:13px;font-weight:600}
+  .shrow{display:flex;gap:6px;align-items:center}
+  .shrow input{flex:1;min-width:0;height:40px;border:1px solid #C9D2DC;border-radius:10px;padding:0 10px;font:inherit;font-size:13px;color:var(--mut);background:#F8FAFB}
+  .sbtn{flex:none;height:40px;min-width:56px;border-radius:10px;border:1px solid #C9D2DC;background:#fff;color:var(--pri);font:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:0 10px}
+  .sbtn.line{background:#06C755;border-color:#06C755;color:#fff}
+  .man{font-size:13px}
+  .foot{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .fbtn{min-height:60px;border-radius:14px;padding:12px;display:flex;flex-direction:column;justify-content:center;text-decoration:none;font:inherit;text-align:left;cursor:pointer}
+  .fbtn b{font-size:15px;font-weight:600}
+  .fbtn span{font-size:12px}
+  .fbtn.w{background:var(--warnbg);border:1px solid var(--warnbd);color:var(--warn)}
+  .fbtn.n{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .fbtn.n span{color:var(--mut)}
+  .fbtn.only{grid-column:span 2}
+  .tlh{margin:22px 2px 10px;font-size:17px;font-weight:700}
+  .tl{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+  @media(min-width:700px){.tl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .tg{min-width:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px}
+  .tg h3{margin:0 0 4px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .tsub{font-size:13px;font-weight:600;color:var(--mut);margin-top:8px}
+  .ti{display:flex;align-items:center;gap:8px;min-height:46px;border-top:1px solid #F1F3F6;padding-top:6px}
+  .ti:first-of-type{border-top:0}
+  .ti .tn{flex:1;font-size:15px}
+  .ti.sh2{flex-direction:column;align-items:stretch;gap:6px;padding:8px 0 4px}
+  .nolink{font-size:13px;color:var(--mut)}
+  .steps{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 14px;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+  .steps h2{margin:0;font-size:17px}
+  .steps .hint{font-size:12px;color:var(--mut);margin-top:2px}
+  .srow{position:relative;display:flex;justify-content:space-between;align-items:flex-start}
+  .srow::before{content:'';position:absolute;left:28px;right:28px;top:22px;height:2px;background:#C9D2DC}
+  .sbt{position:relative;flex:1;min-width:0;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:5px;font:inherit;cursor:pointer;color:var(--mut)}
+  .sbt .n{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;background:#fff;color:var(--pri);border:2px solid var(--pri);transition:background .15s,color .15s}
+  .sbt .l{font-size:11px;line-height:1.3;text-align:center}
+  .sbt[aria-selected="true"] .n{background:var(--pri);color:#fff}
+  .sbt[aria-selected="true"] .l{color:var(--ink);font-weight:600}
+  .sbt:focus-visible .n{outline:2px solid var(--pri);outline-offset:3px}
+  .sdet{background:#F3F7FB;border-radius:14px;overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease,padding .25s}
+  .sdet.on{max-height:600px;opacity:1;padding:14px}
+  .sdet h3{margin:0 0 6px;font-size:15px}
+  .sdet p{margin:0;font-size:14px;color:#3A4554;line-height:1.65;white-space:pre-line}
+  .snav{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px}
+  .snav span{font-size:12px;color:var(--mut)}
+  .snav button{min-height:40px;padding:0 14px;border-radius:10px;border:0;background:var(--pri);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+  @media(min-width:700px){.sbt .l{font-size:13px}}
+  .obtn{display:flex;align-items:center;gap:10px;min-height:56px;border:1px solid #C9D2DC;border-radius:12px;background:#F3F7FB;padding:8px 12px;font:inherit;text-align:left;width:100%;cursor:pointer;color:var(--ink)}
+  .obtn:hover{border-color:var(--pri)}
+  .obtn b{display:block;font-size:15px;font-weight:600}
+  .obtn small{display:block;font-size:12px;color:var(--mut)}
+  .obtn[disabled]{cursor:default;background:#FAFBFC}
+  .ordp{display:flex;flex-direction:column;gap:12px;height:min(86vh,760px)}
+  .ordh{display:flex;align-items:center;gap:8px}
+  .ordh h2{margin:0;font-size:18px}
+  .ordh .x{width:44px;height:44px;flex:none;border:0;border-radius:12px;background:#F1F3F6;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .ordf{display:flex;gap:8px}
+  .ordf select,.ordf input{height:44px;border:1px solid #C9D2DC;border-radius:10px;padding:0 10px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}
+  .ordf input{flex:1;min-width:0}
+  .ordc{font-size:12px;color:var(--mut)}
+  .ordl{flex:1;overflow:auto;margin:0 -4px;padding:0 4px}
+  .oi{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid #F1F3F6}
+  .oi:first-child{border-top:0}
+  .oi .t{flex:1;min-width:0}
+  .oi .m{font-size:12px;color:var(--mut)}
+  .oi .h{font-size:14px;line-height:1.45}
+  .oi a{flex:none;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid #C9D2DC;display:flex;align-items:center;font-size:13px;font-weight:600;text-decoration:none}
+  .oempty{padding:24px 0;text-align:center;color:var(--mut);font-size:14px}
+  .ft{margin:18px 0 8px;text-align:center;font-size:12px;color:var(--mut)}
+  /* แบบฟอร์มแจ้งปัญหา */
+  .ov{position:fixed;inset:0;background:rgba(27,36,51,.45);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+  @media(min-width:600px){.ov{align-items:center}}
+  .ov[hidden]{display:none}
+  .sheet{background:#fff;width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px}
+  @media(min-width:600px){.sheet{border-radius:18px}}
+  .sheet h2{margin:0 0 4px;font-size:18px}
+  .fld{display:flex;flex-direction:column;gap:4px;margin-top:12px}
+  .fld label{font-size:14px;font-weight:600}
+  .fld input,.fld select,.fld textarea{font:inherit;font-size:15px;border:1px solid #C9D2DC;border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink)}
+  .fld textarea{min-height:120px;resize:vertical}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chips label{font-weight:500}
+  .chips input{position:absolute;opacity:0;pointer-events:none}
+  .chips span{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid #C9D2DC;cursor:pointer;font-size:14px}
+  .chips input:checked+span{background:var(--pri);border-color:var(--pri);color:#fff}
+  .chips input:focus-visible+span{outline:2px solid var(--pri);outline-offset:2px}
+  .hp{position:absolute;left:-9999px}
+  .err{color:#9B1C1C;font-size:14px;min-height:20px;margin-top:10px}
+  .acts{display:flex;gap:8px;margin-top:6px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#1B2433;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:all .2s;z-index:20;pointer-events:none;max-width:90vw;text-align:center}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  .sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<header class="hd"><div class="in" id="hd"></div></header>
+<main class="main">
+  <div id="notice" class="notice" hidden></div>
+  <div id="grid" class="grid"></div>
+  <div id="tl"></div>
+  <div id="foot" class="foot"></div>
+  <section id="steps" class="steps" hidden aria-labelledby="stepsT"></section>
+  <p id="ft" class="ft"></p>
+</main>
+
+<div id="ov" class="ov" hidden>
+  <form id="fb" class="sheet" novalidate>
+    <h2>แจ้งปัญหา / ข้อเสนอแนะ</h2>
+    <div style="font-size:13px;color:var(--mut)">ข้อความส่งถึงผู้ดูแลระบบ ช่วยให้ปรับปรุงระบบได้ตรงจุด</div>
+    <div class="fld"><label for="fName">ชื่อครู</label><input id="fName" autocomplete="name" maxlength="100"></div>
+    <div class="fld"><label for="fSys">ระบบที่เกี่ยวข้อง</label><select id="fSys"></select></div>
+    <div class="fld"><span style="font-size:14px;font-weight:600">ประเภท</span><div class="chips" id="fType" role="radiogroup" aria-label="ประเภท"></div></div>
+    <div class="fld"><label for="fDetail">รายละเอียด</label><textarea id="fDetail" maxlength="2000" placeholder="เช่น กดบันทึกแล้วขึ้นข้อความ... / อยากให้เพิ่ม..."></textarea></div>
+    <div class="fld"><label for="fContact">ช่องทางติดต่อกลับ (ไม่บังคับ)</label><input id="fContact" maxlength="100" placeholder="เบอร์โทร / LINE ID"></div>
+    <input class="hp" id="fWeb" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="err" id="fErr" role="alert"></div>
+    <div class="acts">
+      <button type="button" class="btn o" id="fCancel">ยกเลิก</button>
+      <button type="submit" class="btn p" id="fSend">ส่ง</button>
+    </div>
+  </form>
+</div>
+<div id="sysOv" class="ov" hidden>
+  <div class="sheet sysp" role="dialog" aria-modal="true" aria-labelledby="sysT" id="sysP"></div>
+</div>
+<div id="ordOv" class="ov" hidden>
+  <div class="sheet ordp" role="dialog" aria-modal="true" aria-labelledby="ordT">
+    <div class="ordh"><div style="flex:1"><h2 id="ordT">คำสั่งในการทำงาน</h2><div class="ordc" id="ordG"></div></div>
+      <button type="button" class="x" id="ordClose" aria-label="ปิด"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2433" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="ordf"><label class="sr" for="ordY">ปีการศึกษา</label><select id="ordY"></select>
+      <label class="sr" for="ordQ">ค้นหาคำสั่ง</label><input id="ordQ" type="search" placeholder="ค้นหาเรื่อง / เลขที่"></div>
+    <div class="ordc" id="ordC" aria-live="polite"></div>
+    <div class="ordl" id="ordL"></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== ตั้งค่า: ลิงก์ Web app ของ Apps Script (Portal) ===== */
+var API = 'https://script.google.com/macros/s/AKfycbyCIsE8z24fkqi8TOEZUZxYQzbLpgqKByi8u0z-WrmUB1gY4CiguftG1S0OEKhQ1CON/exec';
+var D = null;
+var $ = function(id){ return document.getElementById(id) };
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c] }) }
+function lsGet(k){ try { return localStorage.getItem(k) || '' } catch(e){ return '' } }
+function lsSet(k, v){ try { localStorage.setItem(k, v) } catch(e){} }
+var tt; function toast(m){ var t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ t.classList.remove('on') }, 2400) }
+
+var ICON = {
+  'บ้าน': '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',
+  'SDQ': '<path d="M9 3h6l1 2h3v16H5V5h3z"/><path d="M9 12l2 2 4-4"/>',
+  'หอพัก': '<path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><path d="M8 12h2M14 12h2M8 16h2M14 16h2"/>',
+  'พฤติกรรม': '<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/>',
+  'โฮมรูม': '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/>',
+  'ขออนุญาต': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  'เอกสาร': '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>'
+};
+function icon(k, off){ return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="' + (off ? '#5A6575' : '#1F4E79') + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICON[k] || ICON['เอกสาร']) + '</svg>' }
+
+function render(){
+  $('hd').innerHTML = (D.beta ? '<span class="beta">รุ่นทดลองใช้</span>' : '') +
+    '<h1>' + esc(D.title) + '</h1><p>' + esc(D.unit) + (D.unit && D.school ? '<br>' : '') + esc(D.school) + '</p>';
+  if (D.notice) { $('notice').textContent = D.notice; $('notice').hidden = false }
+
+  var n = D.systems.length;
+  $('grid').innerHTML = !n ? '<div class="tile off">ยังไม่มีระบบในชีต "ระบบ"</div>' : D.systems.map(function(s, i){
+    var soon = s.status === 'เร็ว ๆ นี้';
+    var wide = (n % 2 === 1 && i === n - 1) ? ' wide' : '';
+    var sub = soon ? '<span class="tag soon">เร็ว ๆ นี้</span>'
+      : s.status === 'กำลังทดสอบ' ? '<span class="tag test">กำลังทดสอบ</span>'
+      : (s.updated ? '<span class="sb">อัปเดต ' + esc(s.updated) + '</span>' : '');
+    var inner = '<span class="ic">' + icon(s.icon, soon) + '</span><span class="tt"><span class="nm">' + esc(s.name) + '</span>' + sub + '</span>';
+    if (soon) return '<div class="tile off' + wide + '" aria-disabled="true">' + inner + '</div>';
+    var only = s.main && !s.second && !s.shares.length && !s.manual;
+    if (only) return '<a class="tile' + wide + '" href="' + esc(s.main.url) + '">' + inner + '</a>';
+    return '<button type="button" class="tile' + wide + '" data-sys="' + i + '" aria-haspopup="dialog">' + inner + '</button>';
+  }).join('');
+
+  renderTeacherLinks();
+  renderSteps();
+  var f = '';
+  if (D.feedback) f += '<button type="button" class="fbtn w' + (D.manual ? '' : ' only') + '" id="openFb"><b>แจ้งปัญหา / ข้อเสนอแนะ</b><span>ระหว่างทดลองใช้</span></button>';
+  if (D.manual) f += '<a class="fbtn n' + (D.feedback ? '' : ' only') + '" target="_blank" rel="noopener" href="' + esc(D.manual) + '"><b>คู่มือการใช้งาน</b><span>รวมทุกระบบ</span></a>';
+  $('foot').innerHTML = f;
+  $('ft').textContent = D.footer || '';
+  if ($('openFb')) $('openFb').onclick = openFb;
+}
+
+/* ---------- แผงเลือกของระบบที่มีหลายปุ่ม ---------- */
+var lastTile = null;
+document.addEventListener('click', function(e){
+  var t = e.target.closest && e.target.closest('[data-sys]');
+  if (!t) return;
+  lastTile = t; openSys(D.systems[Number(t.getAttribute('data-sys'))], Number(t.getAttribute('data-sys')));
+});
+function openSys(s, i){
+  var btns = (s.main ? '<a class="btn p" href="' + esc(s.main.url) + '">' + esc(s.main.label) + '</a>' : '') +
+             (s.second ? '<a class="btn ' + (s.main ? 'o' : 'p') + '" href="' + esc(s.second.url) + '">' + esc(s.second.label) + '</a>' : '');
+  var share = s.shares.length ? '<div class="tsub" style="margin-top:16px">ลิงก์สำหรับส่งต่อ</div>' + s.shares.map(function(x, j){
+    return '<div class="sh"><span class="shl">' + esc(x.label) + '</span>' + shareRow('u' + i + '_' + j, x.label, x.url) + '</div>';
+  }).join('') : '';
+  var man = s.manual ? '<p style="margin:14px 0 0"><a class="man" target="_blank" rel="noopener" href="' + esc(s.manual) + '">คู่มือการใช้งาน</a></p>' : '';
+  $('sysP').innerHTML = '<h2 id="sysT"><span class="ic">' + icon(s.icon) + '</span>' + esc(s.name) + '</h2>' +
+    (s.desc ? '<div class="ds">' + esc(s.desc) + '</div>' : '') + '<div class="btns">' + btns + '</div>' + share + man +
+    '<div class="acts" style="margin-top:16px"><button type="button" class="btn o" id="sysClose">ปิด</button></div>';
+  $('sysOv').hidden = false;
+  $('sysClose').onclick = closeSys;
+  setTimeout(function(){ var a = $('sysP').querySelector('a,button'); if (a) a.focus() }, 30);
+}
+function closeSys(){ $('sysOv').hidden = true; if (lastTile) lastTile.focus() }
+$('sysOv').addEventListener('click', function(e){ if (e.target === $('sysOv')) closeSys() });
+$('sysOv').addEventListener('keydown', function(e){ if (e.key === 'Escape') closeSys() });
+
+/* ---------- ลิงก์สำหรับครู ---------- */
+function shareRow(id, label, url){
+  return '<div class="shrow"><input id="' + id + '" readonly value="' + esc(url) + '" aria-label="ลิงก์ ' + esc(label) + '">' +
+    '<button type="button" class="sbtn" data-copy="' + id + '">คัดลอก</button>' +
+    '<a class="sbtn line" target="_blank" rel="noopener" href="https://line.me/R/share?text=' + encodeURIComponent(label + '\n' + url) + '" aria-label="แชร์ ' + esc(label) + ' ทาง LINE">LINE</a>' +
+    '<a class="sbtn" target="_blank" rel="noopener" href="' + esc(url) + '" aria-label="เปิดดู ' + esc(label) + '">เปิด</a></div>';
+}
+function renderTeacherLinks(){
+  var G = (D.teacherLinks || []).map(function(g){
+    return { group: g.group, sections: g.sections.map(function(sec){
+      return { title: sec.title, items: sec.items.filter(function(it){ return !(/^คำสั่งในการทำงาน/.test(it.name) && !it.url) }) };
+    }).filter(function(sec){ return sec.items.length }) };
+  });
+  (D.orderGroups || []).slice().reverse().forEach(function(name){
+    if (!G.some(function(g){ return g.group === name })) G.unshift({ group: name, sections: [] });
+  });
+  G.sort(function(a, b){ var o = D.orderGroups || [], x = o.indexOf(a.group), y = o.indexOf(b.group); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y) });
+  if (!G.length) { $('tl').innerHTML = ''; return }
+  $('tl').innerHTML = '<h2 class="tlh">สำหรับครู</h2><div class="tl">' + G.map(function(g, gi){
+    var ic = /หอ/.test(g.group) ? ICON['หอพัก'] : '<path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6M8 11h6"/>';
+    var ord = '';
+    if ((D.orderGroups || []).indexOf(g.group) >= 0) {
+      var L = (D.orders || {})[g.group] || [];
+      ord = '<button type="button" class="obtn" data-ord="' + esc(g.group) + '"' + (L.length ? '' : ' disabled') + '>' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4E79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON['เอกสาร'] + '</svg>' +
+        '<span style="flex:1"><b>คำสั่งในการทำงาน</b><small>' + (L.length ? 'ปีการศึกษา ' + esc(L[0].year) : 'ยังไม่มีคำสั่ง') + '</small></span>' +
+        (L.length ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F4E79" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>' : '') + '</button>';
+    }
+    return '<section class="tg"><h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F4E79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ic + '</svg>' + esc(g.group) + '</h3>' + ord +
+      g.sections.map(function(sec, si){
+        return (sec.title ? '<div class="tsub">' + esc(sec.title) + '</div>' : '') + sec.items.map(function(it, ii){
+          if (!it.url) return '<div class="ti"><span class="tn">' + esc(it.name) + '</span><span class="nolink">ยังไม่มีลิงก์</span></div>';
+          if (it.share) return '<div class="ti sh2"><span class="tn">' + esc(it.name) + '</span>' + shareRow('t' + gi + '_' + si + '_' + ii, it.name, it.url) + '</div>';
+          return '<div class="ti"><span class="tn">' + esc(it.name) + '</span><a class="sbtn" style="min-width:96px" target="_blank" rel="noopener" href="' + esc(it.url) + '">เปิดอ่าน</a></div>';
+        }).join('');
+      }).join('') + '</section>';
+  }).join('') + '</div>';
+}
+
+/* ---------- 5 ขั้นตอนระบบดูแลช่วยเหลือ (อยู่ล่างสุด) ---------- */
+var STEP = -1;
+function renderSteps(){
+  var S = D.steps || [];
+  if (!S.length) { $('steps').hidden = true; return }
+  $('steps').innerHTML = '<div><h2 id="stepsT">ระบบดูแลช่วยเหลือผู้เรียน ' + S.length + ' ขั้นตอน</h2><div class="hint">แตะตัวเลขเพื่ออ่านว่าแต่ละขั้นทำอะไร</div></div>' +
+    '<div class="srow" role="tablist" aria-label="ขั้นตอน">' + S.map(function(st, i){
+      return '<button type="button" class="sbt" role="tab" id="sbt' + i + '" aria-selected="false" aria-controls="sdet" data-step="' + i + '">' +
+        '<span class="n">' + esc(st.no) + '</span><span class="l">' + esc(st.short || st.name).replace(/\n/g, '<br>') + '</span></button>';
+    }).join('') + '</div><div class="sdet" id="sdet" role="tabpanel" aria-live="polite"></div>';
+  $('steps').hidden = false;
+}
+function showStep(i){
+  var S = D.steps, det = $('sdet');
+  if (i === STEP) { STEP = -1; det.classList.remove('on'); markStep(); return }   // แตะซ้ำ = ปิด
+  STEP = i; var st = S[i];
+  det.innerHTML = '<h3>ขั้นที่ ' + esc(st.no) + ' ' + esc(st.name) + '</h3><p>' + esc(st.desc) + '</p>' +
+    '<div class="snav"><span>ขั้นที่ ' + (i + 1) + ' / ' + S.length + '</span>' +
+    (i < S.length - 1 ? '<button type="button" data-step="' + (i + 1) + '">ขั้นถัดไป: ' + esc(S[i + 1].name) + ' →</button>' : '<button type="button" data-step="0">กลับไปขั้นที่ 1</button>') + '</div>';
+  det.classList.add('on'); markStep();
+  setTimeout(function(){ det.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) }, 80);
+}
+function markStep(){
+  Array.prototype.forEach.call(document.querySelectorAll('.sbt'), function(b, j){ b.setAttribute('aria-selected', j === STEP ? 'true' : 'false') });
+}
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('[data-step]');
+  if (b) showStep(Number(b.getAttribute('data-step')));
+});
+
+/* ---------- แผงคำสั่ง (เลือกปี + ค้นหา) ---------- */
+var ORD_G = '', ordBtn = null;
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('[data-ord]');
+  if (b && !b.disabled) { ordBtn = b; openOrd(b.getAttribute('data-ord')) }
+});
+function openOrd(g){
+  ORD_G = g;
+  var L = D.orders[g] || [], years = [];
+  L.forEach(function(o){ if (years.indexOf(o.year) < 0) years.push(o.year) });
+  $('ordG').textContent = g;
+  $('ordY').innerHTML = years.map(function(y){ return '<option value="' + esc(y) + '">' + (/^\d+$/.test(y) ? 'ปีการศึกษา ' : '') + esc(y) + '</option>' }).join('');
+  $('ordQ').value = '';
+  renderOrd();
+  $('ordOv').hidden = false;
+  setTimeout(function(){ $('ordY').focus() }, 30);
+}
+function renderOrd(){
+  var y = $('ordY').value, q = $('ordQ').value.trim().toLowerCase();
+  var L = (D.orders[ORD_G] || []).filter(function(o){ return o.year === y && (!q || (o.title + ' ' + o.no).toLowerCase().indexOf(q) >= 0) });
+  $('ordC').textContent = L.length + ' ฉบับ · เรียงจากใหม่ไปเก่า';
+  $('ordL').innerHTML = !L.length ? '<div class="oempty">ไม่พบคำสั่ง' + (q ? 'ที่ตรงกับคำค้น' : '') + '</div>' : L.map(function(o){
+    var meta = [o.no ? 'คำสั่งที่ ' + esc(o.no) : '', esc(o.date)].filter(String).join(' · ');
+    return '<div class="oi"><div class="t">' + (meta ? '<div class="m">' + meta + '</div>' : '') + '<div class="h">' + esc(o.title) + '</div></div>' +
+      (o.url ? '<a target="_blank" rel="noopener" href="' + esc(o.url) + '">เปิดอ่าน</a>' : '<span class="m">ไม่มีลิงก์</span>') + '</div>';
+  }).join('');
+}
+function closeOrd(){ $('ordOv').hidden = true; if (ordBtn) ordBtn.focus() }
+$('ordY').onchange = renderOrd;
+$('ordQ').oninput = renderOrd;
+$('ordClose').onclick = closeOrd;
+$('ordOv').addEventListener('click', function(e){ if (e.target === $('ordOv')) closeOrd() });
+$('ordOv').addEventListener('keydown', function(e){ if (e.key === 'Escape') closeOrd() });
+
+/* ---------- คัดลอกลิงก์ (ใช้ได้ทั้งมือถือและคอมพิวเตอร์) ---------- */
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('[data-copy]');
+  if (!b) return;
+  var inp = $(b.getAttribute('data-copy'));
+  var done = function(){ b.textContent = 'คัดลอกแล้ว'; toast('คัดลอกลิงก์แล้ว'); setTimeout(function(){ b.textContent = 'คัดลอก' }, 1800) };
+  var fallback = function(){
+    inp.focus(); inp.select(); inp.setSelectionRange(0, 99999);
+    var ok = false; try { ok = document.execCommand('copy') } catch(err){}
+    if (ok) done(); else toast('กดค้างที่ลิงก์เพื่อคัดลอก');
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(inp.value).then(done, fallback);
+  else fallback();
+});
+
+/* ---------- แจ้งปัญหา ---------- */
+function openFb(){
+  $('fSys').innerHTML = '<option value="">— เลือกระบบ —</option>' + D.systems.map(function(s){ return '<option>' + esc(s.name) + '</option>' }).join('') + '<option>Portal / อื่น ๆ</option>';
+  $('fType').innerHTML = D.fbTypes.map(function(t, i){ return '<label><input type="radio" name="fType" value="' + esc(t) + '"' + (i ? '' : ' checked') + '><span>' + esc(t) + '</span></label>' }).join('');
+  $('fName').value = lsGet('pt_name'); $('fDetail').value = ''; $('fContact').value = lsGet('pt_contact'); $('fErr').textContent = '';
+  $('ov').hidden = false;
+  setTimeout(function(){ ($('fName').value ? $('fSys') : $('fName')).focus() }, 30);
+}
+function closeFb(){ $('ov').hidden = true; if ($('openFb')) $('openFb').focus() }
+$('fCancel').onclick = closeFb;
+$('ov').addEventListener('click', function(e){ if (e.target === $('ov')) closeFb() });
+$('ov').addEventListener('keydown', function(e){ if (e.key === 'Escape') closeFb() });
+$('fb').onsubmit = function(e){
+  e.preventDefault();
+  var t = document.querySelector('input[name="fType"]:checked');
+  var p = { name: $('fName').value.trim(), system: $('fSys').value, type: t ? t.value : '', detail: $('fDetail').value.trim(), contact: $('fContact').value.trim(), website: $('fWeb').value };
+  if (!p.name) { $('fErr').textContent = 'กรุณากรอกชื่อครู'; $('fName').focus(); return }
+  if (p.detail.length < 5) { $('fErr').textContent = 'กรุณาเล่ารายละเอียดเพิ่มอีกนิด'; $('fDetail').focus(); return }
+  lsSet('pt_name', p.name); lsSet('pt_contact', p.contact);
+  var b = $('fSend'); b.disabled = true; b.textContent = 'กำลังส่ง…'; $('fErr').textContent = '';
+  var fail = function(m){ b.disabled = false; b.textContent = 'ส่ง'; $('fErr').textContent = m || 'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง' };
+  // text/plain: ไม่ต้องขอสิทธิ์ CORS ล่วงหน้า (Apps Script รับได้)
+  fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'feedback', data: p }) })
+    .then(function(r){ return r.json() })
+    .then(function(res){
+      if (!res || !res.ok) return fail(res && res.error);
+      b.disabled = false; b.textContent = 'ส่ง'; closeFb(); toast('ส่งเรียบร้อย ขอบคุณค่ะ');
+    })
+    .catch(function(){ fail('ส่งไม่สำเร็จ ตรวจอินเทอร์เน็ตแล้วลองใหม่') });
+};
+
+/* ---------- โหลดข้อมูล: แสดงข้อมูลที่จำไว้ทันที แล้วดึงข้อมูลล่าสุดจากชีต ---------- */
+function showLoading(){
+  $('hd').innerHTML = '<h1>ระบบดูแลช่วยเหลือผู้เรียน</h1><p>กำลังโหลด…</p>';
+  $('grid').innerHTML = [0,1,2,3].map(function(){ return '<div class="tile off" aria-hidden="true" style="min-height:112px"></div>' }).join('');
+}
+function load(){
+  var cached = null;
+  try { cached = JSON.parse(localStorage.getItem('pt_data') || 'null') } catch(e){}
+  if (cached && cached.systems) { D = cached; render() } else showLoading();
+  fetch(API + '?api=portal', { cache: 'no-store' })
+    .then(function(r){ return r.json() })
+    .then(function(data){
+      if (!data || !data.systems) throw new Error('bad');
+      var changed = JSON.stringify(data) !== JSON.stringify(D);
+      D = data; lsSet('pt_data', JSON.stringify(data));
+      if (changed) render();
+    })
+    .catch(function(){
+      if (!D) { $('hd').innerHTML = '<h1>ระบบดูแลช่วยเหลือผู้เรียน</h1><p>โหลดข้อมูลไม่สำเร็จ</p>';
+        $('grid').innerHTML = '<div class="tile off" style="grid-column:1/-1">โหลดข้อมูลไม่สำเร็จ กรุณาตรวจอินเทอร์เน็ตแล้วรีเฟรชหน้า</div>' }
+    });
+}
+load();
+</script>
+</body>
+</html>
